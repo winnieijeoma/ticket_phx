@@ -1,0 +1,43 @@
+<%= form_for @changeset, @action, [multipart: true], fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="w-screen h-screen bg-gray-200">
+   
+    <div class="bg-white mx-64 px-24" >
+      
+        <div >
+          <%= label f, :name %><br />
+          <%= text_input f, :name, class: "border border-grey-500 input-height py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline login_error_notification border-grey-500 caution-input" %>
+          <%= error_tag f, :name %>
+        </div>
+
+        <div >
+          <%= label f, :category %><br />
+          <%= text_input f, :category,  class: "border border-grey-500 input-width input-height py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline login_error_notification border-grey-500 caution-input" %>
+          <%= error_tag f, :category %>
+        </div>
+     
+
+        <div >
+            <%= label f, :status %><br />
+            <%= select f, :status, ["open", "close"] %>
+            <%= error_tag f, :status %>
+        </div>
+
+
+      <div>
+        <%= label f, :priority %><br />
+        <%= select f, :priority, ["low", "medium", "high"] %>
+        <%= error_tag f, :priority %>
+      </div>
+
+      <div id="save" class="mx-12">
+        <%= submit "Save" %>
+      </div>
+    </div>
+  </div>
+<% end %>
